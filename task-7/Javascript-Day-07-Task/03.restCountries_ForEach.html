@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Name, Capital, Flag Using For Each Function</title>
+    <style>
+      body {
+        background-color: black;
+      }
+      h1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+        font-size: 2rem;
+        color: #fff;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>
+      Print the following details name, capital, flag using forEach function,
+      kindly check the console for result
+    </h1>
+    <script>
+      let request = new XMLHttpRequest();
+      request.open("GET", "https://restcountries.com/v3.1/all");
+      request.send();
+      request.onload = () => {
+        let result = JSON.parse(request.response);
+        console.log(result);
+        result.forEach((element) => {
+          console.log(element.name.common);
+          console.log(element.capital);
+          console.log(element.flag);
+          console.log(" ");
+        });
+      };
+    </script>
+  </body>
+</html>

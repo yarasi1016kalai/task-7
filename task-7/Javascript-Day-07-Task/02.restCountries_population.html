@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Population Using Filter</title>
+    <style>
+      body {
+        background-color: black;
+      }
+      h1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+        font-size: 2rem;
+        color: #fff;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>
+      Get all the countries with a population of less than 2 lakhs using Filter
+      function, kindly check the console for result
+    </h1>
+    <script>
+      //1st step: create a XHR object
+      let request = new XMLHttpRequest();
+      //2nd Step: API URL
+      request.open("GET", "https://restcountries.com/v3.1/all");
+      //3rd step:establishing the bridge
+      request.send();
+      //4th step: once the data successfully received from server and then used Filter
+      request.onload = () => {
+        let result = JSON.parse(request.response);
+        console.log(result.filter((data) => data.population < 200000));
+      };
+    </script>
+  </body>
+</html>

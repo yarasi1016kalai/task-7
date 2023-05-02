@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>total population of countries using reduce function</title>
+    <style>
+      body {
+        background-color: black;
+      }
+      h1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+        font-size: 2rem;
+        color: #fff;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>
+      Print the total population of countries using reduce function, Kindly
+      Check Console for the Result
+    </h1>
+    <script>
+      let request = new XMLHttpRequest();
+      request.open("GET", "https://restcountries.com/v3.1/all");
+      request.send();
+      request.onload = () => {
+        let result = JSON.parse(request.response);
+        result.reduce((accumulator, currentValue) =>
+          console.log(currentValue.name.common, currentValue.population)
+        );
+      };
+    </script>
+  </body>
+</html>

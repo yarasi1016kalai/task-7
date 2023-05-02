@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Print the country which uses US Dollars as currency</title>
+    <style>
+      body {
+        background-color: black;
+      }
+      h1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+        font-size: 2rem;
+        color: #fff;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>
+      Print the country which uses US Dollars as currency, Kindly check console
+      for the result
+    </h1>
+    <script>
+      let request = new XMLHttpRequest();
+      request.open("GET", "https://restcountries.com/v3.1/all");
+      request.send();
+      request.onload = () => {
+        let result = JSON.parse(request.response);
+        for (let key of result) {
+          if (key.currencies.USD) {
+            console.log(key.name.common);
+          }
+        }
+      };
+    </script>
+  </body>
+</html>
